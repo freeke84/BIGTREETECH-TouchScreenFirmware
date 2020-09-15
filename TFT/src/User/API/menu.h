@@ -1,8 +1,12 @@
 #ifndef _MENU_H_
 #define _MENU_H_
 
-#include "stdint.h"
-#include "stdbool.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdint.h>
+#include <stdbool.h>
 #include "GUI.h"
 
 #define IDLE_TOUCH	0xFFFF
@@ -16,13 +20,6 @@
 #define LISTITEM_WIDTH    (LCD_WIDTH-(3*START_X)-LIST_ICON_WIDTH)
 #define LISTITEM_HEIGHT   ((LCD_HEIGHT-ICON_START_Y-START_X)/5)
 #define LISTICON_SPACE_Y  ((LCD_HEIGHT-ICON_START_Y-START_X-(3*LIST_ICON_HEIGHT))/ 2)
-
-#define TOAST_MSG_COUNT       3
-#define TOAST_X_PAD           START_X
-#define TOAST_Y_PAD           3
-
-#define TOAST_MSG_LENGTH      35
-#define TOAST_DISPLAY_LENGTH  TOAST_MSG_LENGTH
 
 typedef enum
 {
@@ -83,7 +80,7 @@ typedef struct
 {
   GUI_RECT rect;
   uint32_t time;
-  uint8_t  status;
+  uint8_t status;
   int16_t inf;
 }REMINDER;
 
@@ -128,14 +125,6 @@ typedef struct
  LIVE_DATA lines[LIVEICON_LINES];
 }LIVE_INFO;
 
-typedef struct
-{
-  DIALOG_TYPE style;
-  uint8_t     isNew;
-  char        text[TOAST_MSG_LENGTH];
-}TOAST;
-
-
 void showLiveInfo(uint8_t index, const LIVE_INFO * liveicon, const ITEM * item);
 
 extern const GUI_RECT exhibitRect;
@@ -143,9 +132,6 @@ extern const GUI_RECT rect_of_key[ITEM_PER_PAGE*2];
 
 void setMenuType(MENU_TYPE type);
 MENU_TYPE getMenuType(void);
-
-void addToast(DIALOG_TYPE style, char * text);
-bool toastRunning(void);
 
 void reminderSetUnConnected(void);
 void reminderMessage(int16_t inf, SYS_STATUS status);
@@ -170,5 +156,9 @@ GUI_POINT getIconStartPoint(int index);
 void loopBackEnd(void);
 void loopFrontEnd(void);
 void loopProcess (void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
