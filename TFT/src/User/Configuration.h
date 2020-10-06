@@ -174,7 +174,7 @@
 #define FAN_CTRL_NUM 0    // set in 1~2
 
 #define PREHEAT_LABELS   {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND   {200,   240,    230,   170,    220,   250}
+#define PREHEAT_HOTEND   {210,   240,    230,   170,    220,   250}
 #define PREHEAT_BED      {60,    70,     90,    50,     50,    90}
 
 #define HEAT_MAX_TEMP    {275,       275,       275,       275,       275,       275,       150,    60}   //max temperature can be set
@@ -258,7 +258,7 @@
  * Options:  0: Disabled    1: Auto-detect [default]    2: ABL    3: BBL    4: UBL    5: MBL
  *
  */
-#define ENABLE_BL_VALUE 1
+#define ENABLE_BL_VALUE 2
 
 /**
  * Enable friendly probe offset language.
